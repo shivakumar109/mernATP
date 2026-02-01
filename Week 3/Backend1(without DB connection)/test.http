@@ -1,0 +1,73 @@
+GET http://127.0.0.1:3000/user-api/user
+### 
+POST http://127.0.0.1:3000/user-api/user
+Content-Type: application/json
+
+{
+     "id":1,
+     "name":"shivakumar",
+     "age":20
+}
+
+
+
+###
+PUT http://127.0.0.1:3000/user-api/user/id 
+Content-Type: application/json
+
+{
+     "id":1,
+     "name":"ram",
+     "age":21
+}
+
+###
+DELETE  http://127.0.0.1:3000/user-api/user/id 
+Content-Type: application/json
+
+{
+     "id":1,
+     "name":"ram",
+     "age":21
+}
+
+###
+GET http://127.0.0.1:3000/user-api/user/1
+
+###
+GET  http://localhost:3000/product-api/product
+
+###
+POST http://localhost:3000/product-api/product
+Content-Type: application/json
+
+{
+     "id":1,
+     "name":"laptop",
+     "price":50000,
+     "brand":"dell"
+}
+
+###
+PUT  http://localhost:3000/product-api/product/id
+Content-Type: application/json
+
+{
+     "id":1,
+     "name":"laptop",
+     "price":100000,
+     "brand":"dell"
+}
+###
+DELETE  http://localhost:3000/product-api/product/id
+Content-Type: application/json
+
+{
+     "id":1,
+     "name":"laptop",
+     "price":50000,
+     "brand":"dell"
+}
+
+###
+GET http://localhost:3000/product-api/product/1

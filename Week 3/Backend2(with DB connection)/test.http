@@ -1,0 +1,60 @@
+### read all users
+GET http://localhost:4000/user-api/user
+
+### read user by id
+GET http://localhost:4000/user-api/user/697dbaf689c2bad9a78ea119
+
+### create a new user
+POST http://localhost:4000/user-api/user
+Content-Type: application/json
+
+{
+     "username":"ravi",
+     "password":"ravi123",
+     "age":22
+}
+
+### update user
+PUT http://localhost:4000/user-api/user/697dbfc1da8a7239af777c08
+Content-Type: application/json
+
+{
+     "username":"ravi",
+     "password":"ravi123",
+     "age":18
+
+}
+### deleted user
+DELETE  http://localhost:4000/user-api/user/697dbfc1da8a7239af777c08
+
+
+###product GET
+GET  http://localhost:4000/product-api/product 
+
+###product post
+POST http://localhost:4000/product-api/product
+Content-Type: application/json
+
+{
+     "name":"IPhone",
+     "price":100000,
+     "brand":"Apple"
+}
+
+###get by id
+GET http://localhost:4000/product-api/product/697dd119a63d6ad8fca75fbc
+
+###update product
+PUT http://localhost:4000/product-api/product/697dd119a63d6ad8fca75fbc
+Content-Type: application/json
+
+{
+     "name":"Laptop",
+     "price":50000,
+     "brand":"Dell"
+}
+
+###delete product
+DELETE http://localhost:4000/product-api/product/697dd119a63d6ad8fca75fbc
+
+
