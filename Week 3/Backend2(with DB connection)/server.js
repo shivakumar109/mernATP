@@ -2,8 +2,10 @@ import exp from 'express';
 import { userApp } from "./API/userapi.js"
 import { productApp } from "./API/productapi.js"
 import { connect } from 'mongoose';
+import cookieParser from 'cookie-parser';
 const app = exp();
 const port=4000;
+app.use(cookieParser());
 //connect to database
 async function dbconnect(){
      try{

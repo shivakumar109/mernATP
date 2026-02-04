@@ -44,6 +44,7 @@ productApp.delete('/product/:id',async(req,res)=>{
      //get id
      let objId=req.params.id;
      //delete product by id
-     let deletedProduct=await ProductModel.findByIdAndDelete(objId)
-     res.status(200).json({message:"product deleted",payload:deletedProduct})
+     let deletedProduct=await ProductModel.findByIdAndDelete(objId);
+     //send res
+     res.status(200).json({message:"product deleted",payload:deletedProduct});
 })

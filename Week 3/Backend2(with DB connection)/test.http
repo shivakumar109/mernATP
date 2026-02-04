@@ -9,8 +9,8 @@ POST http://localhost:4000/user-api/user
 Content-Type: application/json
 
 {
-     "username":"ravi",
-     "password":"ravi123",
+     "username":"shiva",
+     "password":"shiva123",
      "age":22
 }
 
@@ -19,13 +19,26 @@ PUT http://localhost:4000/user-api/user/697dbfc1da8a7239af777c08
 Content-Type: application/json
 
 {
-     "username":"ravi",
-     "password":"ravi123",
+     "username":"shiva",
+     "password":"shiva123",
      "age":18
 
 }
 ### deleted user
 DELETE  http://localhost:4000/user-api/user/697dbfc1da8a7239af777c08
+
+### User authentication(login) req
+POST http://localhost:4000/user-api/auth
+Content-Type: application/json
+
+{
+     "username":"shiva",
+     "password":"shiva123"
+}
+
+###req for procted route
+GET http://localhost:4000/user-api/test
+
 
 
 ###product GET
@@ -36,9 +49,9 @@ POST http://localhost:4000/product-api/product
 Content-Type: application/json
 
 {
-     "name":"IPhone",
-     "price":100000,
-     "brand":"Apple"
+     "name":"Phone",
+     "price":30000,
+     "brand":"Redmi"
 }
 
 ###get by id
