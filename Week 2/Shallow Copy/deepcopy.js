@@ -1,4 +1,4 @@
-// Given Data:
+//Given Data:
 const order = {
      orderId: "ORD1001",
      customer: {
@@ -13,7 +13,7 @@ const order = {
      ]
 };
 
-// 🎯 Task:
+// Task:
 // 1. Create a deep copy of order
 let copy=JSON.parse(JSON.stringify(order))
 // 2. Modify in copied object:
