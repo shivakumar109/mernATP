@@ -1,4 +1,4 @@
-// 🧪 Given Data:
+//Given Data:
 const user = {
      id: 101,
      name: "Ravi",
@@ -8,7 +8,7 @@ const user = {
      }
 };
 
-// 🎯 Task
+// Task
 //     1. Create a shallow copy of user
 let usercopy={...user}
 //2. Change:
