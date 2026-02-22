@@ -1,0 +1,79 @@
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:Arial, Helvetica, sans-serif;
+}
+
+body{
+  background:#edf2f8;
+  padding:40px;
+}
+
+/* GRID */
+.wrapper{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:20px;
+}
+
+/* CARD BASE */
+.card{
+  padding:25px;
+  border-radius:10px;
+  box-shadow:0 4px 12px rgba(0,0,0,0.08);
+}
+
+/* USER */
+.user{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  margin-bottom:15px;
+}
+
+.user img{
+  width:40px;
+  height:40px;
+  border-radius:50%;
+}
+
+.card h2{
+  font-size:18px;
+  margin-bottom:10px;
+}
+
+.card p{
+  font-size:14px;
+  line-height:1.5;
+}
+
+/* COLORS */
+.purple{
+  background:#7541c8;
+  color:white;
+}
+
+.dark{
+  background:#48556a;
+  color:white;
+}
+
+.navy{
+  background:#19212e;
+  color:white;
+}
+
+.light{
+  background:white;
+  color:#333;
+}
+
+/* GRID SPANS */
+.span-2{
+  grid-column:span 2;
+}
+
+.span-tall{
+  grid-row:span 2;
+}
