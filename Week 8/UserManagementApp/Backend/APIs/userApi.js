@@ -1,55 +1,83 @@
-import exp from 'express'
-import { UserModel } from '../Models/userModel.js';
+// Create mini-express app
+import exp from "express";
+import { UserModel } from "../Models/userModel.js";
+export const UserApp = exp.Router();
 
-//create a min-express app
-export const UserApp=exp.Router();
-//user api route
-//create user
-UserApp.post('/user',async(req,res)=>{
-     //get new user
-     let newUser= req.body;
-     //create user document
-     let newUserDocument= new UserModel(newUser)
-     //save user
-     let userObj=await newUserDocument.save();
-     //semd res
-     res.status(201).json({message:"User Created",payload:userObj});
-})
-//read all users
-UserApp.get('/users',async(req,res)=>{
-     let users=await UserModel.find({status:true})
-     //send res
-     if(users.length===0){
-          return res.status(400).json({message:"users not found"})
-     }
-     return res.status(200).json({message:"Users in data",payload:users})
-})
-//read a user by id
-UserApp.get('/user/:id',async(req,res)=>{
-     let uid = req.params.id
-     let user = await UserModel.findById(uid)
-     if(!user || user.status === false)
-     {
-          return res.status(404).json({message:"User Not Found"})
-     }
-     res.status(200).json({message:"User Details:-",payload: user})
-})
-//delete user by id
-UserApp.delete("/user/:id",async(req,res)=>{
-     let uid = req.params.id
-     let user = await UserModel.findById(uid)
-     if(!user || user.status === false)
-     {
-          return res.status(404).json({message:"User Not Found"})
-     }
-     await UserModel.findByIdAndUpdate(uid,{$set:{status:false}})
-     res.status(200).json({message:"User Removed"})
-})
+//USER API ROUTES
 
-//activation of user
-UserApp.patch("/user/:id" ,async(req,res)=>{
-     let uid=req.params.id;
-     let user = await UserModel.findByIdAndUpdate(uid,{$set:{status:true}},{new:true})
-     res.status(200).json({message:"user actived",payload:user})
-})
+// Create User
+UserApp.post("/users", async (req, res) => {
+  //get new user
+  const newUser = req.body;
+  //create user document
+  const newUserDocument = new UserModel(newUser);
+  //save new user
+  let user = await newUserDocument.save();
+  //send res
+  res.status(201).json({ message: "User created", payload: user });
+});
 
+// Read all Users
+UserApp.get("/users", async (req, res) => {
+  //read all users
+  let usersList = await UserModel.find({ status: true });
+  //send res
+  res.status(200).json({ message: "users", payload: usersList });
+});
+
+// Read a User by ID
+UserApp.get("/users/:id", async (req, res) => {
+  //get user if from url
+  let uid = req.params.id;
+  //find user by id
+  let user = await UserModel.findOne({ _id: uid, status: true });
+  //check user
+  if (!user) {
+    return res.status(404).json({ message: "user not found" });
+  }
+  //send res
+  res.status(200).json({ message: "user found", payload: user });
+});
+
+// Delete a User by ID
+UserApp.delete("/users/:id", async (req, res) => {
+  //get user if from url
+  let uid = req.params.id;
+  //find user and chage status to false
+  let user = await UserModel.findByIdAndUpdate(uid, { $set: { status: false } });
+  //check user
+  if (!user) {
+    return res.status(404).json({ message: "user not found" });
+  }
+  //send res
+  res.status(200).json({ message: "User removed" });
+});
+
+//Activate User(change status to true)
+UserApp.patch("/users/:id", async (req, res) => {
+  //get user if from url
+  let uid = req.params.id;
+  //find user and chage status to false
+  let user = await UserModel.findByIdAndUpdate(uid, { $set: { status: true } }, { new: true });
+
+  //send res
+  res.status(200).json({ message: "User activated", payload: user });
+});
+//PUT(complete change) & PATCH(partial changes)
+
+// Update user by ID
+UserApp.put("/users/:id", async (req, res) => {
+  //get user id from url
+  let uid = req.params.id;
+  //get updated data from body
+  let updateData = req.body;
+  //find user and update
+  let user = await UserModel.findByIdAndUpdate(uid, { $set: updateData }, { new: true });
+
+  if (!user) {
+    return res.status(404).json({ message: "user not found" });
+  }
+
+  //send res
+  res.status(200).json({ message: "User updated successfully", payload: user });
+});

@@ -1,11 +1,18 @@
-import { useForm } from 'react-hook-form'
-import { useState } from 'react'
-import { useNavigate } from 'react-router';
+import { useState } from "react";
+import { useForm } from "react-hook-form";
+import { useNavigate } from "react-router";
+
 function AddUser() {
-  const { register, handleSubmit, formState: { errors } } = useForm()
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
+
   let [loading, setLoading] = useState(false);
-  let [error, setError] = useState();
-  let navigate = useNavigate()
+  let [error, setError] = useState(null);
+
+  let navigate = useNavigate();
 
   //form submit
   const onUserCreate = async (newUser) => {
@@ -13,7 +20,7 @@ function AddUser() {
     setLoading(true);
     // make HTTP POST req to create new user
     try {
-      let res = await fetch("http://localhost:4000/user-api/user", {
+      let res = await fetch("http://localhost:4000/user-api/users", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -23,7 +30,7 @@ function AddUser() {
 
       if (res.status === 201) {
         //user created it shd navigate to users list
-        navigate("/userlist");
+        navigate("/users-list");
       } else {
         console.log(res)
         throw new Error("error occurred");
@@ -35,6 +42,7 @@ function AddUser() {
       setLoading(false);
     }
   };
+
   if (loading) {
     return <p className="text-center text-orange-400 text-3xl"> Loading...</p>;
   }
@@ -42,26 +50,39 @@ function AddUser() {
   if (error) {
     return <p className="text-center text-red-400 text-3xl"> {error.message}</p>;
   }
+
   return (
-    <div className="text-center">
-      <h1 className="text-5xl text-gray-600">Add New User</h1>
+    <div className="max-w-xl mx-auto bg-white p-10 rounded-2xl shadow-sm border border-gray-100 mt-10">
+      <h1 className="text-3xl font-bold text-blue-900 mb-8 text-center">Add New User</h1>
       {/* Create user form */}
-      <form onSubmit={handleSubmit(onUserCreate)} className="max-w-96 mx-auto mt-10">
-        <input type="text" {...register("name")} className="mb-5 border w-full text-2xl" placeholder="Name" />
-        <input type="email" {...register("email")} className="mb-5 border w-full text-2xl" placeholder="Email" />
-        <input
-          type="date"
-          {...register("dateOfBirth")}
-          className="mb-5 border w-full text-2xl"
-          placeholder="Date of birth"
-        />
-        <input
-          type="number"
-          {...register("mobileNumber")}
-          className="mb-5 border w-full text-2xl"
-          placeholder="Mobile number"
-        />
-        <button type="submit" className="text-2xl bg-lime-400 text-lime-50 px-8 py-4">
+      <form onSubmit={handleSubmit(onUserCreate)} className="flex flex-col gap-5">
+        <div>
+          <label className="block text-sm font-medium text-gray-700 mb-1">Name</label>
+          <input type="text" {...register("name")} className="border border-gray-300 w-full text-lg p-3 rounded-lg focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500" placeholder="Enter full name" />
+        </div>
+        <div>
+          <label className="block text-sm font-medium text-gray-700 mb-1">Email</label>
+          <input type="email" {...register("email")} className="border border-gray-300 w-full text-lg p-3 rounded-lg focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500" placeholder="Enter email address" />
+        </div>
+        <div>
+          <label className="block text-sm font-medium text-gray-700 mb-1">Date of Birth</label>
+          <input
+            type="date"
+            {...register("dateOfBirth")}
+            className="border border-gray-300 w-full text-lg p-3 rounded-lg focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 text-gray-600"
+            placeholder="Date of birth"
+          />
+        </div>
+        <div>
+          <label className="block text-sm font-medium text-gray-700 mb-1">Mobile Number</label>
+          <input
+            type="number"
+            {...register("mobileNumber")}
+            className="border border-gray-300 w-full text-lg p-3 rounded-lg focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500"
+            placeholder="Enter mobile number"
+          />
+        </div>
+        <button type="submit" className="text-xl font-semibold bg-blue-600 text-white px-8 py-4 mt-4 rounded-xl hover:bg-blue-700 transition-colors shadow-sm">
           Add User
         </button>
       </form>
@@ -69,4 +90,4 @@ function AddUser() {
   );
 }
 
-export default AddUser
+export default AddUser;
