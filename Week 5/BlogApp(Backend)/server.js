@@ -1,10 +1,10 @@
 import exp from 'express';
 import { connect } from 'mongoose';
 import { config } from 'dotenv';
-import { userRoute } from './APIs/user_api.js'
-import { authorRoute } from './APIs/author_api.js'
-import { adminRoute } from './APIs/admin_api.js'
-import { commonRoute } from './APIs/common_api.js';
+import { userRoute } from './APIs/userApi.js'
+import { authorRoute } from './APIs/authorApi.js'
+import { adminRoute } from './APIs/adminApi.js'
+import { commonRoute } from './APIs/commonApi.js';
 import cookieParser from 'cookie-parser';
 
 config() //process.env

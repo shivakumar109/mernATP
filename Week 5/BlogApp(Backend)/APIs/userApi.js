@@ -1,9 +1,9 @@
 import exp from 'express'
-import { register, authenticate} from '../Services/auth_service.js'
-import { checkAuthor} from '../Middlewares/check_author.js'
-import { verifyToken } from '../Middlewares/verify_token.js';
-import { ArticleTypeModel } from '../Models/article_model.js';
-import { UserTypeModel } from '../Models/user_model.js';
+import { register, authenticate} from '../Services/authService.js'
+import { checkAuthor} from '../Middlewares/checkAuthor.js'
+import { verifyToken } from '../Middlewares/verifyToken.js';
+import { ArticleTypeModel } from '../Models/articleModel.js';
+import { UserTypeModel } from '../Models/userModel.js';
 export const userRoute=exp.Router();
 
 //Register user

@@ -5,7 +5,7 @@ Content-Type: application/json
 {
      "firstName":"Shiva",
      "lastName":"kumar",
-     "email":"shiav@gmail.com",
+     "email":"sk@gmail.com",
      "password":"shiva",
      "profileImageUrl":"http://example/dp.png"
 }
@@ -15,8 +15,8 @@ POST http://localhost:4000/common-api/login
 Content-Type: application/json
 
 {
-     "email":"shiavreddy@gmail.com",
-     "password":"shivareddy"
+     "email":"sk@gmail.com",
+     "password":"shiva"
 }
 ### Author Register
 POST http://localhost:4000/author-api/users

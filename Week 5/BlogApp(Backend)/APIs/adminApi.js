@@ -1,6 +1,6 @@
 import exp from 'express'
-import { UserTypeModel } from '../Models/user_model.js';
-import { verifyToken } from '../Middlewares/verify_token.js';
+import { UserTypeModel } from '../Models/userModel.js';
+import { verifyToken } from '../Middlewares/verifyToken.js';
 export const adminRoute=exp.Router();
 
 //read all artical(optional)

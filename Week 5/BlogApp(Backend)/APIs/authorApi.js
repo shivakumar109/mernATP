@@ -1,10 +1,10 @@
 import exp from 'express'
-import { register } from '../Services/auth_service.js'
-import { UserTypeModel } from '../Models/user_model.js';
-import { ArticleTypeModel } from '../Models/article_model.js'
-import { checkAuthor } from '../Middlewares/check_author.js'
-import { authenticate } from '../Services/auth_service.js';
-import { verifyToken } from '../Middlewares/verify_token.js';
+import { register } from '../Services/authService.js'
+import { UserTypeModel } from '../Models/userModel.js';
+import { ArticleTypeModel } from '../Models/articleModel.js'
+import { checkAuthor } from '../Middlewares/checkAuthor.js'
+import { authenticate } from '../Services/authService.js';
+import { verifyToken } from '../Middlewares/verifyToken.js';
 export const authorRoute=exp.Router();
 
 //Register autho(public)
